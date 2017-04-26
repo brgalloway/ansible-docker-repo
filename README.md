@@ -1,5 +1,5 @@
-Repository of Ansible Playbooks
+# Repository of Ansible Playbooks
 
-Docker Playbook
-This playbook will install docker on the hosts defined in your inventory. It will update apt-cache and complete all 
-necassary steps for Docker CE on all hosts. I have included a ubuntu and centOS version. 
+These playbooks will update apt-cache and complete all necassary steps to install
+the main service on all hosts in your inventory. I have included a ubuntu and centOS versions
+of each service you are wanting to install. 
