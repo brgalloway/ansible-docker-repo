@@ -4,30 +4,24 @@
   become: true 
   tasks:
 
-    - name: "Install is starting."
-      apt: update_cache=yes state=latest name={{ item }}
+    - name: "Install is starting"
+      yum: update_cache=yes state=latest name={{ item }}
       with_items:
-        - apt-transport-https
-        - ca-certificates
-        - curl
+        - yum-utils
+    - name: "Add Repo"
+      yum_repository: 
+        name: docker-repo
+        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
     
-    - name: "Update and Install Docker"
-      apt:
+    - name: "yum makecache"
+      command: yum makecache fast
+    - name: 
+      yum:
         name: docker-ce
-        state: latest
-        update_cache: true
-
-    - name: "curl down keys"
-      command: >
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-    - name: "Adding docker repository to ubuntu"
-      command: >
-          add-apt-repository 
-          "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-    - name: "Update and Install Docker"
-      apt:
-        name: docker-ce
-        state: latest
-        update_cache: true
+    
+    - name: "Start Docker"
+      systemd:
+        state: start
+        name: docker
+      
+  
