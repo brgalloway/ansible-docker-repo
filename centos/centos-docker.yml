@@ -1,27 +1,32 @@
 ---
 - name: Configure server with docker
   hosts: control
-  become: true 
+  become: true
   tasks:
 
     - name: "Install is starting"
       yum: update_cache=yes state=latest name={{ item }}
       with_items:
         - yum-utils
-    - name: "Add Repo"
-      yum_repository: 
-        name: docker-repo
-        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
-    
-    - name: "yum makecache"
-      command: yum makecache fast
-    - name: 
+
+    - name: "curl down keys"
       yum:
         name: docker-ce
+        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+        enabled: yes
     
+    - name: "Update yum again"
+      yum:
+        update_cache: yes
+
+    - name: "yum makecache"
+      command: yum makecache fast
+    - name:
+      yum:
+        name: docker-ce
+
     - name: "Start Docker"
       systemd:
         state: start
         name: docker
-      
-  
+
