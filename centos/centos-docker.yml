@@ -1,4 +1,5 @@
-me: Configure server with docker
+---
+-name: Configure server with docker
   hosts: control
   become: true
   tasks:
