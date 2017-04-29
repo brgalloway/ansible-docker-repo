@@ -1,10 +1,10 @@
 ---
 - name: Configure server with docker
   hosts: control
-  become: true 
+  become: yes 
   tasks:
 
-    - name: "Install is starting."
+    - name: "Install is starting"
       apt: update_cache=yes state=latest name={{ item }}
       with_items:
         - apt-transport-https
@@ -14,18 +14,16 @@
     - name: "Adding keys to apt"
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
-        keyring: /etc/apt/trusted.gpg.d
-        state: present
+        validate_certs: no
   
     - name: "Adding docker repository to ubuntu"
       apt_repository:
-        repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
-        
-    - name: "Updating apt"
-      apt:
+        repo: deb https://download.docker.com/linux/ubuntu xenial stable 
+        state: present
         update_cache: yes
         
     - name: "Install Docker"
       apt:
         name: docker-ce
         state: latest
+        update_cache: yes
