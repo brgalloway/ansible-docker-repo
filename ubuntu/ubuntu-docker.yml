@@ -21,12 +21,11 @@
       apt_repository:
         repo: deb https://apt.dockerproject.org/repo ubuntu-xenial main
         
-    - name:
+    - name: "Updating apt"
       apt:
         update_cache: yes
         
-    - name: "Update and Install Docker"
+    - name: "Install Docker"
       apt:
         name: docker-ce
         state: latest
-        update_cache: true
