@@ -1,6 +1,6 @@
 ---
 - name: Configure server with docker
-  hosts: control
+  hosts: ubuntu 
   become: yes 
   tasks:
 

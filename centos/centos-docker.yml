@@ -1,6 +1,6 @@
 ---
--name: Configure server with docker
-  hosts: control
+- name: "Configure server with docker"
+  hosts: centos
   become: true
   tasks:
 
@@ -16,7 +16,6 @@
         baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
         gpgcheck: yes
         gpgkey: https://download.docker.com/linux/centos/gpg
-        #enabled: yes
 
     - name: "Install Docker CE"
       yum:
