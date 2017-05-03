@@ -1,0 +1,24 @@
+---
+- name: "Configure server with docker"
+  hosts: centos
+  become: true
+  tasks:
+
+    - name: "Install is starting"
+      yum: update_cache=yes state=latest name={{ item }}
+      with_items:
+        - yum-utils
+
+    - name: "Add stable docker repository"
+      yum_repository:
+        name: docker-ce-stable
+        description: docker-ce
+        baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+        gpgcheck: yes
+        gpgkey: https://download.docker.com/linux/centos/gpg
+
+    - name: "Install Docker CE"
+      yum:
+        name: docker-ce
+        update_cache: yes
+
