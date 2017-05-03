@@ -1,5 +1,4 @@
-# Repository of Ansible Playbooks
+# Ansible and Docker collection
 
-These playbooks will update the package manager for the distribution used, and will complete
-all the necassary steps to install the main service on all hosts in your inventory.
-Included in the repository is a CentOS and Ubuntu variation of each playbook. 
+This repository is a collection of ansible playbooks, roles, and docker files for quickly deploying services.
+
