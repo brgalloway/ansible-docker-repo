@@ -1,0 +1,15 @@
+---
+version: "2.1"
+services:
+  ubuntu-bind:
+    image: ubuntu/bind
+    volumes:
+      - ./bind-dir:/etc/named/db
+    ports:
+      - "53:53"
+    command: ifconfig
+    networks:
+      <name_of_network>:
+        ipv4_address: 172.18.0.10
+      
+
