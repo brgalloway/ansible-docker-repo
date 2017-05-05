@@ -3,3 +3,4 @@ ansible.cfg
 *.retry
 hosts
 dev
+.gitignore
