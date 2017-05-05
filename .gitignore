@@ -1,6 +1,0 @@
-/home/bgalloway/work/ansible/ansible.cfg
-ansible.cfg
-*.retry
-hosts
-dev
-.gitignore
