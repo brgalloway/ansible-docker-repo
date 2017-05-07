@@ -1,1 +1,1 @@
-named.conf
+./docker/centos/bind9-centos/named.conf
