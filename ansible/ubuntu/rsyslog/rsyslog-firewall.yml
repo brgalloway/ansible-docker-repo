@@ -1,5 +1,5 @@
 ---
-- name: iptables baseline
+- name: "rsyslog tcp translation"
   hosts: ubuntu
   become: true
   tasks:
